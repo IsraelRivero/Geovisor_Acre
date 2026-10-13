@@ -19,7 +19,7 @@ mapaBaseActivoActual.addTo(map);
 var capasDibujo = L.layerGroup().addTo(map);
 var capasPronostico = {};
 const JSON_URL = "https://raw.githubusercontent.com/sei-latam/Geovisor_Acre/main/consultas.json"; 
-const GEOSERVER_BASE_URL = "http://acre.senamhi.gob.bo/geoserver/rio_acre_manchas/wms";
+const GEOSERVER_BASE_URL = "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms";
 
 async function cargarCapasDesdeJSON() {
   try {
