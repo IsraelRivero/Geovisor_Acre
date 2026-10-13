@@ -21,6 +21,43 @@ var capasPronostico = {};
 const JSON_URL = "https://raw.githubusercontent.com/sei-latam/Geovisor_Acre/main/consultas.json"; 
 const GEOSERVER_BASE_URL = "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms";
 
+// Profundidad de cada capa de pronóstico (para colorear la leyenda)
+var depthPronostico = {};
+
+// Rampa de colores: misma que estilo_inundacion en GeoServer e index.js
+var rampaColoresInundacion = [
+  { limite: 0,  color: "#ffffff", etiqueta: "0 metros" },
+  { limite: 2,  color: "#a6bddb", etiqueta: "2 metros" },
+  { limite: 6,  color: "#3690c0", etiqueta: "6 metros" },
+  { limite: 12, color: "#023858", etiqueta: "12 metros" },
+  { limite: 17, color: "#4a1486", etiqueta: "17 metros" }
+];
+
+function obtenerColorPorProfundidad(valorDepth) {
+  var valor = parseFloat(valorDepth);
+  if (isNaN(valor)) return rampaColoresInundacion[0].color;
+  var colorSeleccionado = rampaColoresInundacion[0].color;
+  for (var i = 0; i < rampaColoresInundacion.length; i++) {
+    if (valor >= rampaColoresInundacion[i].limite) {
+      colorSeleccionado = rampaColoresInundacion[i].color;
+    }
+  }
+  return colorSeleccionado;
+}
+
+function renderizarRampaLeyenda() {
+  var contenedorRampa = document.getElementById('leyendaRampaContenedor');
+  if (!contenedorRampa) return;
+  contenedorRampa.innerHTML = rampaColoresInundacion.map(function(tramo) {
+    return `
+      <div class="flex items-center gap-2">
+        <span class="w-3 h-3 rounded shrink-0 border border-slate-200" style="background-color: ${tramo.color};"></span>
+        <span>${tramo.etiqueta} (≥ ${tramo.limite} m)</span>
+      </div>
+    `;
+  }).join('');
+}
+
 async function cargarCapasDesdeJSON() {
   try {
     var response = await fetch(JSON_URL);
@@ -46,8 +83,11 @@ async function cargarCapasDesdeJSON() {
         format: 'image/png',
         transparent: true,
         version: '1.1.0',
+        styles: 'estilo_inundacion',
         attribution: "GeoServer - Pronóstico"
       });
+
+      depthPronostico[chkId] = item.depth;
 
       var numeroDia = index + 1;
 
@@ -95,7 +135,7 @@ function actualizarLeyendaDinamica() {
     if (checkbox && checkbox.checked) {
       var fila = checkbox.closest('.flex');
       var titulo = fila ? fila.querySelector('.font-bold').innerText : "Capa de Pronóstico";
-      html += `<div class="flex items-center gap-2"><span class="w-3 h-3 bg-blue-500 rounded-sm"></span><span>${titulo}</span></div>`;
+      html += `<div class="flex items-center gap-2"><span class="w-3 h-3 rounded-sm border border-slate-200 shrink-0" style="background-color: ${obtenerColorPorProfundidad(depthPronostico[id])};"></span><span>${titulo}</span></div>`;
     }
   });
   
@@ -197,5 +237,6 @@ function limpiarDibujos() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+  renderizarRampaLeyenda();
   cargarCapasDesdeJSON();
 });
