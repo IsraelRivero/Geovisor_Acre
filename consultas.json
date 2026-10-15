@@ -1,20 +1,26 @@
 [
   {
+    "plan": "TR2",
+    "depth": "10.00",
+    "fechaDetectada": "2026-10-14T14:57",
+    "servicio": "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms?service=WMS&version=1.1.0&request=GetMap&layers=rio_acre_manchas:rio_acre_manchas:Depth_23_19APR2026_05_30_00_TR02&styles=estilo_inundacion&format=image/png&transparent=true"
+  },
+  {
     "plan": "TR10",
     "depth": "11.00",
-    "fechaDetectada": "2026-10-12T11:16",
+    "fechaDetectada": "2026-10-15T14:57",
     "servicio": "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms?service=WMS&version=1.1.0&request=GetMap&layers=rio_acre_manchas:rio_acre_manchas:Depth_15_19APR2026_03_30_00_TR10&styles=estilo_inundacion&format=image/png&transparent=true"
   },
   {
     "plan": "TR50",
-    "depth": "13.00",
-    "fechaDetectada": "2026-10-13T11:16",
-    "servicio": "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms?service=WMS&version=1.1.0&request=GetMap&layers=rio_acre_manchas:rio_acre_manchas:Depth_19_19APR2026_04_30_00_TR50&styles=estilo_inundacion&format=image/png&transparent=true"
+    "depth": "12.00",
+    "fechaDetectada": "2026-10-16T14:58",
+    "servicio": "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms?service=WMS&version=1.1.0&request=GetMap&layers=rio_acre_manchas:rio_acre_manchas:Depth_13_19APR2026_03_00_00_TR50&styles=estilo_inundacion&format=image/png&transparent=true"
   },
   {
     "plan": "TR100",
-    "depth": "12.00",
-    "fechaDetectada": "2026-10-14T11:17",
-    "servicio": "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms?service=WMS&version=1.1.0&request=GetMap&layers=rio_acre_manchas:rio_acre_manchas:Depth_12_19APR2026_02_45_00_TR100&styles=estilo_inundacion&format=image/png&transparent=true"
+    "depth": "13.00",
+    "fechaDetectada": "2026-10-17T14:58",
+    "servicio": "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms?service=WMS&version=1.1.0&request=GetMap&layers=rio_acre_manchas:rio_acre_manchas:Depth_16_19APR2026_03_45_00_TR100&styles=estilo_inundacion&format=image/png&transparent=true"
   }
 ]
