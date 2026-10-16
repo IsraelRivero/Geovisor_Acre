@@ -18,7 +18,7 @@ var mapaBaseActivoActual = grupoSateliteHibrido;
 mapaBaseActivoActual.addTo(map);
 var capasDibujo = L.layerGroup().addTo(map);
 var capasPronostico = {};
-const JSON_URL = "https://raw.githubusercontent.com/sei-latam/Geovisor_Acre/main/consultas.json"; 
+const JSON_URL = "https://raw.githubusercontent.com/IsraelRivero/Geovisor_Acre/main/consultas.json"; 
 const GEOSERVER_BASE_URL = "https://senageo.senamhi.gob.bo/geoserver/rio_acre_manchas/wms";
 
 // Profundidad de cada capa de pronóstico (para colorear la leyenda)
